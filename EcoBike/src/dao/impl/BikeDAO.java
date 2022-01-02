@@ -6,6 +6,9 @@ import dao.IBikeDAO;
 import mapper.BikeMapper;
 import model.BikeModel;
 
+/**
+ * 
+ * */
 public class BikeDAO extends AbstractDAO<BikeModel> implements IBikeDAO {
 
 	private String sql;

@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import dao.IStationDAO;
 import dao.impl.StationDAO;
 import model.StationModel;
@@ -16,7 +18,9 @@ public class StationController {
 	public void updateStation(StationModel updateStation) {
 		stationDAO.update(updateStation);
 	}
-	 
+	public List<StationModel> getAllStation() {
+		return this.stationDAO.findAll();
+	}
 	public StationModel findById(int id) {
 		return stationDAO.findById(id);
 	}

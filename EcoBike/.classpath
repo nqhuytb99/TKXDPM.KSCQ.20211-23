@@ -22,5 +22,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/20211/TKXDPM/eclipse-workspace/EcoBike/libs/jar_files/mysql-connector-java-8.0.26.jar"/>
+	<classpathentry kind="lib" path="D:/20211/TKXDPM/CapstoneProject/TKXDPM.KSCQ.20211-23/EcoBike/libs/jar_files/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
