@@ -1,0 +1,71 @@
+CREATE TABLE `station` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL,
+  `address` varchar(128) NOT NULL,
+  `num_of_bikes` int NOT NULL,
+    `num_of_ebikes` int NOT NULL,
+    `num_of_twinbikes` int NOT NULL,
+    `num_of_empty_docks` int NOT NULL,
+  PRIMARY KEY (`id`)
+)
+
+INSERT INTO `station` (`id`, `name`, `address`, `num_of_bikes` , `num_of_ebikes`, `num_of_twinbikes`, `num_of_empty_docks`) VALUES
+(1,	'HUST',	'1 Dai Co Viet, Hai Ba Trung, Ha Noi',	20,	20, 20, 20),
+(2,	'UET',	'144 Xuan Thuy, Dich Vong Hau, Cau Giay, Ha Noi',	25,	20, 20, 20),
+(3,	'FPT',	'Hoa Lac, Thach That, Ha Noi',	30,	30, 30, 30),
+(4,	'PTIT',	'122 Hoang Quoc Viet, Cau Giay, Ha Noi',	35, 20, 35, 0	),
+(5,	'NEU',	'207 Giai Phong, Dong Tam, Ha Noi',	30,	20, 20, 0),
+(6,	'FTU',	'Chua Lang, Dong Da, Ha Noi',	25,	25, 25, 25),
+(7,	'HMU',	'1 Ton That Tung, Dong Da, Ha Noi',	20, 30, 30, 30	),
+(8,	'HLU',	'87 Nguyen Chi Thanh, Thanh Cong, Dong Da, Ha Noi',	25,	35, 35, 35),
+(9,	'ULIS',	'Pham Van Dong, Dich Vong Hau, Cau Giay, Ha Noi',	30,	30, 30, 30),
+(10,	'HNUE',	'144 Xuan Thuy, Dich Vong Hau, Cau Giay, Ha Noi',	35,	20, 30, 20),
+(11,	'MTA',	'236 Hoang Quoc Viet, Co Nhue, Bac Tu Liem, Ha Noi',	30,20, 20, 20	),
+(12,	'HUMG',	'18 Pho Vien, Duc Thang, Bac Tu Liem, Ha Noi',	25, 20, 20, 20	);
+
+CREATE TABLE `bike` ( 
+    `id` int NOT NULL AUTO_INCREMENT, 
+    `name` varchar(150) NOT NULL, 
+    `type` varchar(45) NOT NULL, 
+    `weight` int NOT NULL, 
+    `license_plate` varchar(45) NOT NULL, 
+    `manuafacturing_date` date NOT NULL, 
+    `cost` int NOT NULL, 
+    `producer` varchar(150) NOT NULL, 
+    `battery` int DEFAULT NULL, 
+    `load_cycles` int DEFAULT NULL, 
+    `time_remaining` int DEFAULT NULL, 
+    `id_station` int NOT NULL, 
+    `status` int NOT NULL,
+    PRIMARY KEY (`id`), 
+    KEY `id_station` (`id_station`), 
+    CONSTRAINT `fk_bike_station` FOREIGN KEY (`id_station`) REFERENCES `station` (`id`) 
+)
+INSERT INTO `bike` (`id`, `name`, `type`,`weight`, `license_plate`, `manuafacturing_date`, `cost`, `producer`, `battery`, `load_cycles`, `time_remaining`, `id_station`) VALUES
+(1,	'Xe đạp địa hình 24MTB_ACTION ', 'standard', 2, 'STD-01', '2019-12-14', 100000, 'ACTION', null, null, null, 1, 1),
+(2,	'Xe đạp địa hình 24MTB_ACTION ', 'electric', 2, 'E-02', '2019-12-14', 100000, 'ACTION', null, null, null, 2, 1),
+(3,	'Xe đạp địa hình 24MTB_ACTION ', 'twin', 2, 'TW-01', '2019-12-14', 100000, 'ACTION', null, null, null, 1, 1),
+(4,	'Xe đạp địa hình 24MTB_ACTION ', 'electric', 2, 'E-01', '2019-12-14', 100000, 'ACTION', null, null, null, 3, 1),
+(5,	'Xe đạp địa hình 24MTB_ACTION ', 'electric', 2, 'E-01', '2019-12-14', 100000, 'ACTION', null, null, null, 4, 1),
+(6,	'Xe đạp địa hình 24MTB_ACTION ', 'twin', 2, 'TW-01', '2019-12-14', 100000, 'ACTION', null, null, null, 5, 1)
+
+CREATE TABLE `payment` ( 
+    `id` int NOT NULL AUTO_INCREMENT, 
+    `id_bike` int NOT NULL, 
+    `deposit_card_number` varchar(150) NOT NULL, 
+    `payment_card_number` varchar(150) NOT NULL, 
+    `id_station_rent` int NOT NULL, 
+    `id_station_return` int,
+    `rent_time` timestamp NOT NULL,
+    `return_time` timestamp,
+    `deposit_price` int NOT NULL,
+    `rent_price` int NOT NULL,
+    `status` int NOT NULL,
+    PRIMARY KEY (`id`), 
+    KEY `id_station_rent` (`id_station_rent`), 
+    KEY `id_station_return` (`id_station_return`),
+    KEY `id_bike` (`id_bike`),
+    CONSTRAINT `fk1_payment_station` FOREIGN KEY (`id_station_rent`) REFERENCES `station` (`id`),
+    CONSTRAINT `fk2_payment_station` FOREIGN KEY (`id_station_return`) REFERENCES `station` (`id`),
+    CONSTRAINT `fk_payment_bike` FOREIGN KEY (`id_bike`) REFERENCES `bike` (`id`)
+)
