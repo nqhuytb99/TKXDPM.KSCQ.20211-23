@@ -5,7 +5,9 @@ import dao.impl.PaymentDAO;
 import model.PaymentModel;
 import java.util.Calendar;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import common.exception.InvalidCardException;
 import common.exception.PaymentException;
@@ -14,6 +16,7 @@ import model.CreditCard;
 import model.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
+import utils.TypePayment;
 
 public class PaymentController {
 	private IPaymentDAO paymentDAO;
@@ -25,7 +28,16 @@ public class PaymentController {
 	public int savePayment(PaymentModel newPayment) {
 		return this.paymentDAO.insert(newPayment);
 	}
-
+	
+	/**
+	 * update payment after refund
+	 * 
+	 * @param payment
+	 * @return
+	 */
+	public void updatePaymentAfterRefund(PaymentModel payment) {
+		this.paymentDAO.update(payment);
+	}
 	/**
 	 * Represent the card used for payment
 	 */
@@ -85,7 +97,7 @@ public class PaymentController {
 	 *         message.
 	 */
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
-			String expirationDate, String securityCode) {
+			String expirationDate, String securityCode, TypePayment typePayment) {
 		Map<String, String> result = new Hashtable<String, String>();
 		result.put("RESULT", "PAYMENT FAILED!");
 		try {
@@ -93,7 +105,14 @@ public class PaymentController {
 					getExpirationDate(expirationDate));
 
 			this.interbank = new InterbankSubsystem();
-			PaymentTransaction transaction = interbank.payOrder(card, amount, contents);
+			PaymentTransaction transaction = null;
+			if (Objects.equals(typePayment, TypePayment.PAY)) {
+				transaction = interbank.payOrder(card, amount, contents);
+			}
+			
+			if (Objects.equals(typePayment, TypePayment.REFUND)) {
+				transaction = interbank.refund(card, amount, contents);
+			}
 
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have succesffully paid the order!");
@@ -101,6 +120,15 @@ public class PaymentController {
 			result.put("MESSAGE", ex.getMessage());
 		}
 		return result;
+	}
+	
+	/**
+	 * get all list payment need return bike
+	 * 
+	 * @return
+	 */
+	public List<PaymentModel> getAllPaymentNeedReturn() {
+		return paymentDAO.findAll();
 	}
 
 }

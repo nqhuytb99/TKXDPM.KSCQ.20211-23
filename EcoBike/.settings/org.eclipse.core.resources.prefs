@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/dao/impl/AbstractDAO.java=UTF-8
+encoding//src/dao/impl/StationDAO.java=UTF-8
 encoding//src/utils/Configs.java=UTF-8
+encoding//src/views/screen/bike/ReturnBikeDetailScreen.java=UTF-8

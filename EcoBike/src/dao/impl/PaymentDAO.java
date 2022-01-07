@@ -4,8 +4,9 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import dao.IPaymentDAO;
+import mapper.PaymentMapper;
 import model.PaymentModel;
-
+import utils.Utils;
 
 public class PaymentDAO extends AbstractDAO<PaymentModel> implements IPaymentDAO {
 
@@ -14,7 +15,8 @@ public class PaymentDAO extends AbstractDAO<PaymentModel> implements IPaymentDAO
 	@Override
 	public List<PaymentModel> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		sql = "SELECT * FROM payment where status = 1";
+		return query(sql, new PaymentMapper());
 	}
 
 	@Override
@@ -27,7 +29,9 @@ public class PaymentDAO extends AbstractDAO<PaymentModel> implements IPaymentDAO
 
 	@Override
 	public void update(PaymentModel updatePayment) {
-		// TODO Auto-generated method stub
+		sql = " UPDATE payment SET return_time = ?, status =?, rent_price =?, id_station_return = ? WHERE id = ?";
+		update(sql, updatePayment.getRent_time(), updatePayment.getStatus(), updatePayment.getRent_price(),
+				updatePayment.getId_station_return(), updatePayment.getId());
 
 	}
 

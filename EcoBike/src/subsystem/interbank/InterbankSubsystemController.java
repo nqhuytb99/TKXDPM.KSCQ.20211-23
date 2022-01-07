@@ -21,13 +21,14 @@ public class InterbankSubsystemController {
 
 	private static final String PUBLIC_KEY = "AQzdE8O/fR8=";
 	private static final String SECRET_KEY = "BUXj/7/gHHI=";
-	private static final String PAY_COMMAND = "pay";
+	private String PAY_COMMAND = "pay";
 	private static final String VERSION = "1.0.0";
 
 	private static InterbankBoundary interbankBoundary = new InterbankBoundary();
 
 	public PaymentTransaction refund(CreditCard card, int amount, String contents) {
-		return null;
+		this.PAY_COMMAND = "refund";
+		return payOrder(card, amount, contents);
 	}
 	
 	private String generateData(Map<String, Object> data) {

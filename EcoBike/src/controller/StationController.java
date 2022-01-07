@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import common.SearchQueryInfomation;
 import dao.IStationDAO;
 import dao.impl.StationDAO;
 import model.StationModel;
@@ -18,11 +19,20 @@ public class StationController {
 	public void updateStation(StationModel updateStation) {
 		stationDAO.update(updateStation);
 	}
-	public List<StationModel> getAllStation() {
-		return this.stationDAO.findAll();
-	}
+	 
 	public StationModel findById(int id) {
 		return stationDAO.findById(id);
 	}
+	
+	public List<StationModel> findAll(){
+		return stationDAO.findAll();
+	}
+	
+	public List<StationModel> findByQuery(SearchQueryInfomation seacrhQuery) {
+		return stationDAO.findByQuery(seacrhQuery);
+	}
+	
+	public List<StationModel> findAllAvailable(){
+		return stationDAO.findAllAvailable();
+	}
 }
-

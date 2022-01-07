@@ -1,8 +1,9 @@
 package views.screen;
 
-import configs.Path;
+
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.Configs;
 import views.screen.home.HomeScreenHandler;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class BaseScreenHandler extends FXMLScreenHandler{
     public BaseScreenHandler(String screenPath) throws IOException {
         super(screenPath);
         this.stage = new Stage();
-        homeScreenHandler = new HomeScreenHandler(stage, Path.HOME);
+        homeScreenHandler = new HomeScreenHandler(stage, Configs.HOME);
     }
 
     public BaseScreenHandler(Stage stage, String screenPath) throws IOException {
@@ -29,7 +30,7 @@ public class BaseScreenHandler extends FXMLScreenHandler{
         if (this.scene == null) {
             this.scene = new Scene(this.content);
         }
-        this.scene.getStylesheets().add(getClass().getResource(Path.CSS_STYLE).toExternalForm());
+        this.scene.getStylesheets().add(getClass().getResource(Configs.CSS_STYLE).toExternalForm());
         this.stage.setScene(this.scene);
         this.stage.centerOnScreen();
         this.stage.show();
@@ -49,5 +50,8 @@ public class BaseScreenHandler extends FXMLScreenHandler{
     public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
+    
+    public BaseScreenHandler getHomeSCreenHandler() {
+    	return this.homeScreenHandler;
+    }
 }
-

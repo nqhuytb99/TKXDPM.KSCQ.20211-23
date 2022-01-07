@@ -86,5 +86,8 @@ public class StationModel {
 				+ ", num_of_empty_docks=" + num_of_empty_docks + "]";
 	}
 	
+	public String getShortInfomation() {
+		return name + " : " + address;
+	}
 	
 }

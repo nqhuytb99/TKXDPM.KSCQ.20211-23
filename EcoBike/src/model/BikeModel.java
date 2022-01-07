@@ -16,9 +16,8 @@ public class BikeModel {
 	public static final String TIME_REMAINING = "time_remaining";
 	public static final String ID_STATION = "id_station";
 	public static final String STATUS = "status";
-
 	
-private Integer id;
+	private Integer id;
 	
 	private String name;
 	
@@ -153,7 +152,9 @@ private Integer id;
 		return "BikeModel [id=" + id + ", name=" + name + ", type=" + type + ", weight=" + weight + ", license_plate="
 				+ license_plate + ", manuafacturing_date=" + manuafacturing_date + ", cost=" + cost + ", producer="
 				+ producer + ", battery=" + battery + ", load_cycles=" + load_cycles + ", time_remaining="
-				+ time_remaining + ", id_station=" + id_station + ", status=" + status + "]";
+				+ time_remaining + ", id_station=" + id_station +
+						", status=" + status + 
+						"]";
 	}
 
 	

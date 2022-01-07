@@ -26,6 +26,10 @@ public class PaymentModel {
 	private Integer deposit_price;
 	private Integer rent_price;
 	private Integer status;
+	private BikeModel bikeModel;
+	private StationModel stationModel;
+	private StationModel returnStation;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -92,6 +96,34 @@ public class PaymentModel {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
+	
+	
+	public BikeModel getBikeModel() {
+		return bikeModel;
+	}
+	
+	public void setBikeModel(BikeModel bikeModel) {
+		this.bikeModel = bikeModel;
+	}
+	
+	public StationModel getStationModel() {
+		return stationModel;
+	}
+	
+	public void setStationModel(StationModel stationModel) {
+		this.stationModel = stationModel;
+	}
+	
+	
+	
+	public StationModel getReturnStation() {
+		return returnStation;
+	}
+	
+	public void setReturnStation(StationModel returnStation) {
+		this.returnStation = returnStation;
+	}
+	
 	@Override
 	public String toString() {
 		return "PaymentModel [id=" + id + ", id_bike=" + id_bike + ", deposit_card_number=" + deposit_card_number

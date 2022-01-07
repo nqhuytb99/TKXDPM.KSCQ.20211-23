@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import common.SearchQueryInfomation;
 import model.StationModel;
 
 public interface IStationDAO extends IGenericDAO<StationModel>{
@@ -12,4 +13,8 @@ public interface IStationDAO extends IGenericDAO<StationModel>{
     int insert(StationModel newStation);
     
     void update(StationModel updateStation);
+    
+    List<StationModel> findByQuery(SearchQueryInfomation seacrhQuery);
+    
+    List<StationModel> findAllAvailable();
 }

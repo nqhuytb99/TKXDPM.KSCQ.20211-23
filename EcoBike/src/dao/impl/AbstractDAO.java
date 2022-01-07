@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dao.impl;
 
 import dao.IGenericDAO;
@@ -14,7 +19,10 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
+/**
+ *
+ * @author duong
+ */
 public class AbstractDAO<T> implements IGenericDAO<T> {
 
 	public Connection getConnection() {
@@ -65,6 +73,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
 			}
 			return results;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
 		} finally {
 			try {
@@ -78,7 +87,6 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
 					resultSet.close();
 				}
 			} catch (SQLException e) {
-				return null;
 			}
 		}
 	}
@@ -93,7 +101,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
 			setParameter(statement, parameters);
 			statement.execute();
 		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Update failure !");
+			JOptionPane.showMessageDialog(null, "Sửa không thành công !");
 		} finally {
 			if (statement != null) {
 				try {

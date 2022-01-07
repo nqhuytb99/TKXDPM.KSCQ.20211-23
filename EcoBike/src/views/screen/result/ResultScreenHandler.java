@@ -2,12 +2,13 @@ package views.screen.result;
 
 import java.io.IOException;
 
-import configs.Path;
+import common.SingletonObject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import utils.Configs;
 import views.screen.BaseScreenHandler;
 import views.screen.home.HomeScreenHandler;
 
@@ -40,7 +41,8 @@ public class ResultScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	void confirmPayment(MouseEvent event) throws IOException {
-		HomeScreenHandler homeScreenHandler = new HomeScreenHandler(stage, Path.HOME);
+		SingletonObject.getInstance().clearScreen();
+		HomeScreenHandler homeScreenHandler = new HomeScreenHandler(stage, Configs.HOME);
 		homeScreenHandler.setScreenTitle("Home Screen");
 		homeScreenHandler.show();
 	}

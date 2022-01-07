@@ -38,11 +38,20 @@ public class Configs {
 	public static float PERCENT_VAT = 10;
 
 	// static resource
-	public static final String IMAGE_PATH = "assets/images";
+	public static final String CSS_STYLE = "/views/css/application.css";
+    public static final String HOME = "/views/fxml/HomeScreen.fxml";
+    public static final String BIKE = "/views/fxml/BikeScreen.fxml";
+    public static final String PAYMENT = "/views/fxml/PaymentScreen.fxml";
+    public static final String RESULT = "/views/fxml/ResultScreen.fxml";
+//    public static final String DASHBOARD = "/views/fxml/Dashboard.fxml";
+    public static final String STATION_DETAIL = "/views/fxml/StationDetailScreen.fxml";
+    public static final String ADD_STATION = "/views/fxml/AddStationScreen.fxml";
+    public static final String RETURN_BIKE = "/views/fxml/ReturnBikeScreen.fxml";
+    public static final String RETURN_BIKE_DETAIL = "/views/fxml/ReturnBikeDetailScreen.fxml";
 	public static final String INVOICE_SCREEN_PATH = "/views/fxml/invoice.fxml";
 	public static final String INVOICE_MEDIA_SCREEN_PATH = "/views/fxml/media_invoice.fxml";
 	public static final String PAYMENT_SCREEN_PATH = "/views/fxml/payment.fxml";
-	public static final String RESULT_SCREEN_PATH = "/views/fxml/result.fxml";
+	public static final String RESULT_SCREEN_PATH = "/views/fxml/ResultScreen.fxml";
 	public static final String SPLASH_SCREEN_PATH = "/views/fxml/splash.fxml";
 	public static final String CART_SCREEN_PATH = "/views/fxml/cart.fxml";
 	public static final String SHIPPING_SCREEN_PATH = "/views/fxml/shipping.fxml";
