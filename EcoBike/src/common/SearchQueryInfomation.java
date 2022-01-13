@@ -1,5 +1,7 @@
 package common;
 
+
+
 public class SearchQueryInfomation {
 	private String nameAddressSearch;
 	private Integer minPrice;

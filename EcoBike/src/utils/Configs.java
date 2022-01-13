@@ -43,7 +43,7 @@ public class Configs {
     public static final String BIKE = "/views/fxml/BikeScreen.fxml";
     public static final String PAYMENT = "/views/fxml/PaymentScreen.fxml";
     public static final String RESULT = "/views/fxml/ResultScreen.fxml";
-//    public static final String DASHBOARD = "/views/fxml/Dashboard.fxml";
+    public static final String DASHBOARD = "/views/fxml/Dashboard.fxml";
     public static final String STATION_DETAIL = "/views/fxml/StationDetailScreen.fxml";
     public static final String ADD_STATION = "/views/fxml/AddStationScreen.fxml";
     public static final String RETURN_BIKE = "/views/fxml/ReturnBikeScreen.fxml";
