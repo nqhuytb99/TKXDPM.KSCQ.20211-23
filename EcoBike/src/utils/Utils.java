@@ -48,7 +48,7 @@ public class Utils {
 	/**
 	 * Return a {@link java.lang.String String} that represents the cipher text
 	 * encrypted by md5 algorithm.
-	 * @author duong vnpay
+	 * @author duong
 	 * @param message - plain text as {@link java.lang.String String}.
 	 * @return cipher text as {@link java.lang.String String}.
 	 */
